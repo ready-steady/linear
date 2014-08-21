@@ -19,7 +19,7 @@ func TestAdd(t *testing.T) {
 	}
 }
 
-func BenchmarkMultiply(t *testing.B) {
+func BenchmarkMultiplyMatrix(t *testing.B) {
 	m := 1000
 
 	a := Zero(m, m)
@@ -27,5 +27,16 @@ func BenchmarkMultiply(t *testing.B) {
 
 	for i := 0; i < t.N; i++ {
 		_, _ = a.Multiply(&b)
+	}
+}
+
+func BenchmarkMultiplyVector(t *testing.B) {
+	m := 1000
+
+	a := Zero(m, m)
+	x := Zero(m, 1)
+
+	for i := 0; i < t.N; i++ {
+		_, _ = a.Multiply(&x)
 	}
 }

@@ -73,7 +73,11 @@ func Multiply(a, b *Matrix) (Matrix, error) {
 
 	c := Zero(m, n)
 
-	blas.Dgemm('n', 'n', m, n, k, 1, a.data, m, b.data, k, 1, c.data, m)
+	if n == 1 {
+		blas.Dgemv('n', m, n, 1, a.data, m, b.data, 1, 1, c.data, 1)
+	} else {
+		blas.Dgemm('n', 'n', m, n, k, 1, a.data, m, b.data, k, 1, c.data, m)
+	}
 
 	return c, nil
 }

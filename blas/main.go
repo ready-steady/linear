@@ -1,4 +1,4 @@
-// Package blas is an adaptor to the Basic Linear Algebra Subprograms.
+// Package blas is an adapter for the Basic Linear Algebra Subprograms.
 //
 // http://www.netlib.org/blas/
 package blas

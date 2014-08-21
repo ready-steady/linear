@@ -4,6 +4,25 @@ import (
 	"testing"
 )
 
+func TestDgemv(t *testing.T) {
+	m := 2
+	n := 3
+
+	a := []float64{1, 4, 2, 5, 3, 6}
+	x := []float64{1, 2, 3}
+	y := []float64{6, 8}
+
+	Dgemv('n', m, n, 1, a, m, x, 1, 1, y, 1)
+
+	z := []float64{20, 40}
+
+	for i := range y {
+		if y[i] != z[i] {
+			t.Error("The result is incorrect.")
+		}
+	}
+}
+
 func TestDgemm(t *testing.T) {
 	m := 2
 	n := 4

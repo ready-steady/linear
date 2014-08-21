@@ -1,86 +1,71 @@
 package matrix
 
 import (
-  "errors"
+	"errors"
+	"github.com/gomath/linear/blas"
 )
 
 type Matrix struct {
-  rows, cols int
-  data []float64
+	rows, cols int
+	data       []float64
 }
 
-func New(rows, cols int, data []float64) (Matrix, error) {
-  switch len(data) {
-  case 0:
-    return Matrix{rows, cols, make([]float64, rows * cols)}, nil
-  case rows * cols:
-    return Matrix{rows, cols, data}, nil
-  default:
-    return Matrix{}, errors.New("The data are of an invalid length.")
-  }
+func Zero(rows, cols int) Matrix {
+	return Matrix{rows, cols, make([]float64, rows*cols)}
 }
 
-func (A *Matrix) Equal(B *Matrix) bool {
-  return MatrixEqual(A, B)
+func (a *Matrix) IsEqual(b *Matrix) bool {
+	return IsEqual(a, b)
 }
 
-func (A *Matrix) Add(B *Matrix) (Matrix, error) {
-  return MatrixAdd(A, B)
+func (a *Matrix) Add(b *Matrix) (Matrix, error) {
+	return Add(a, b)
 }
 
-func (A *Matrix) Multiply(B *Matrix) (Matrix, error) {
-  return MatrixMultiply(A, B)
+func (a *Matrix) Multiply(b *Matrix) (Matrix, error) {
+	return Multiply(a, b)
 }
 
-func MatrixEqual(A, B *Matrix) bool {
-  if A.rows != B.rows || A.cols != B.cols {
-    return false
-  }
+func IsEqual(a, b *Matrix) bool {
+	if a.rows != b.rows || a.cols != b.cols {
+		return false
+	}
 
-  for i := range A.data {
-    if A.data[i] != B.data[i] {
-      return false
-    }
-  }
+	for i := range a.data {
+		if b.data[i] != b.data[i] {
+			return false
+		}
+	}
 
-  return true
+	return true
 }
 
-func MatrixAdd(A, B *Matrix) (Matrix, error) {
-  m, n := A.rows, A.cols
+func Add(a, b *Matrix) (Matrix, error) {
+	m, n := a.rows, b.cols
 
-  if m != B.rows || n != B.cols {
-    return Matrix{}, errors.New("A should have the same dimensions as B.")
-  }
+	if m != b.rows || n != b.cols {
+		return Matrix{}, errors.New("The matrix dimensions are incompatible.")
+	}
 
-  R := Matrix{ rows: m, cols: n, data: make([]float64, m * n) }
+	c := Zero(m, n)
 
-  for i := range A.data {
-    R.data[i] = A.data[i] + B.data[i]
-  }
+	for i := range a.data {
+		b.data[i] = a.data[i] + b.data[i]
+	}
 
-  return R, nil
+	return c, nil
 }
 
-func MatrixMultiply(A, B *Matrix) (Matrix, error) {
-  m, n, p := A.rows, A.cols, B.cols
+func Multiply(a, b *Matrix) (Matrix, error) {
+	m, n, k := a.rows, b.cols, a.cols
 
-  if n != B.rows {
-    return Matrix{}, errors.New("A should have as many columns as B has rows.")
-  }
+	if k != b.rows {
+		return Matrix{}, errors.New("The matrix dimensions are incompatible.")
+	}
 
-  R := Matrix{ rows: m, cols: p, data: make([]float64, m * p) }
+	c := Zero(m, n)
 
-  var sum float64
-  for i := 0; i < m; i++ {
-    for j := 0; j < p; j++ {
-      sum = 0
-      for k := 0; k < n; k++ {
-        sum += A.data[i * n + k] * B.data[k * p + j]
-      }
-      R.data[i * p + j] = sum
-    }
-  }
+	blas.Dgemm('n', 'n', m, n, k, 1, a.data, m, b.data, k, 1, c.data, m)
 
-  return R, nil
+	return c, nil
 }

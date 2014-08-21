@@ -10,6 +10,14 @@ type Matrix struct {
 	data       []float64
 }
 
+func New(rows, cols int, data []float64) (Matrix, error) {
+	if len(data) != rows*cols {
+		return Matrix{}, errors.New("The data are of an invalid length.")
+	}
+
+	return Matrix{rows, cols, data}, nil
+}
+
 func Zero(rows, cols int) Matrix {
 	return Matrix{rows, cols, make([]float64, rows*cols)}
 }

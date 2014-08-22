@@ -14,7 +14,7 @@ func TestAdd(t *testing.T) {
 
 	d, _ := New(3, 3, []float64{1, 3, 5, 7, 9, 9, 9, 9, 9})
 
-	if !c.IsEqual(&d) {
+	if !c.Equal(&d) {
 		t.Error("The result is incorrect.")
 	}
 }

@@ -22,8 +22,8 @@ func Zero(rows, cols int) Matrix {
 	return Matrix{rows, cols, make([]float64, rows*cols)}
 }
 
-func (a *Matrix) IsEqual(b *Matrix) bool {
-	return IsEqual(a, b)
+func (a *Matrix) Equal(b *Matrix) bool {
+	return Equal(a, b)
 }
 
 func (a *Matrix) Add(b *Matrix) (Matrix, error) {
@@ -34,7 +34,7 @@ func (a *Matrix) Multiply(b *Matrix) (Matrix, error) {
 	return Multiply(a, b)
 }
 
-func IsEqual(a, b *Matrix) bool {
+func Equal(a, b *Matrix) bool {
 	if a.rows != b.rows || a.cols != b.cols {
 		return false
 	}

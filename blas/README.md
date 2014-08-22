@@ -10,17 +10,20 @@ it currently includes:
 
 ## Installation
 
-If `libblas.a` is available in the system, just run:
+Run:
 
 ```bash
 $ go get github.com/gomath/linear/blas
 ```
 
-If `libblas.a` is not available, still run the above command and see it crash.
-Then install [gfortran](https://gcc.gnu.org/wiki/GFortranBinaries) and run:
+The above command might fail. Regardless of the outcome, continue with the
+following commands:
 
 ```bash
 $ cd $GOPATH/src/github.com/gomath/linear/blas
 $ make
 $ go install
 ```
+
+The `make` part requires [gfortran](https://gcc.gnu.org/wiki/GFortranBinaries)
+to be installed in the system.

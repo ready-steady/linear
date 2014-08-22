@@ -46,9 +46,9 @@ func TestDgemm(t *testing.T) {
 func BenchmarkDgemm(t *testing.B) {
 	m := 1000
 
-	a := make([]float64, m*m)
-	b := make([]float64, m*m)
-	c := make([]float64, m*m)
+	a := make([]float64, m * m)
+	b := make([]float64, m * m)
+	c := make([]float64, m * m)
 
 	for i := 0; i < t.N; i++ {
 		Dgemm('n', 'n', m, m, m, 1, a, m, b, m, 1, c, m)

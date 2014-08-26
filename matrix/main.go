@@ -12,7 +12,7 @@ type Matrix struct {
 }
 
 func New(rows, cols int, data []float64) (*Matrix, error) {
-	if len(data) != rows * cols {
+	if len(data) != rows*cols {
 		return nil, errors.New("the data are of an invalid length")
 	}
 
@@ -20,7 +20,7 @@ func New(rows, cols int, data []float64) (*Matrix, error) {
 }
 
 func Zero(rows, cols int) *Matrix {
-	return &Matrix{rows, cols, make([]float64, rows * cols)}
+	return &Matrix{rows, cols, make([]float64, rows*cols)}
 }
 
 func (a *Matrix) Equal(b *Matrix) bool {

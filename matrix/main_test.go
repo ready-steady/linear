@@ -9,13 +9,13 @@ func TestAdd(t *testing.T) {
 	c, err := a.Add(b)
 
 	if err != nil {
-		t.Error("There should be no error.")
+		t.Fatal("there should be no error")
 	}
 
 	d, _ := New(3, 3, []float64{1, 3, 5, 7, 9, 9, 9, 9, 9})
 
 	if !c.Equal(d) {
-		t.Error("The result is incorrect.")
+		t.Fatal("the result is incorrect")
 	}
 }
 

@@ -13,7 +13,7 @@ type Matrix struct {
 
 func New(rows, cols int, data []float64) (*Matrix, error) {
 	if len(data) != rows * cols {
-		return nil, errors.New("The data are of an invalid length.")
+		return nil, errors.New("the data are of an invalid length")
 	}
 
 	return &Matrix{rows, cols, data}, nil
@@ -53,7 +53,7 @@ func Add(a, b *Matrix) (*Matrix, error) {
 	m, n := a.rows, b.cols
 
 	if m != b.rows || n != b.cols {
-		return nil, errors.New("The matrix dimensions are incompatible.")
+		return nil, errors.New("the matrix dimensions are incompatible")
 	}
 
 	c := Zero(m, n)
@@ -69,7 +69,7 @@ func Multiply(a, b *Matrix) (*Matrix, error) {
 	m, n, k := a.rows, b.cols, a.cols
 
 	if k != b.rows {
-		return nil, errors.New("The matrix dimensions are incompatible.")
+		return nil, errors.New("the matrix dimensions are incompatible")
 	}
 
 	c := Zero(m, n)

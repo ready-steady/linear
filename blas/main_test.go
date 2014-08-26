@@ -18,7 +18,7 @@ func TestDgemv(t *testing.T) {
 
 	for i := range y {
 		if y[i] != z[i] {
-			t.Error("The result is incorrect.")
+			t.Fatal("the result is incorrect")
 		}
 	}
 }
@@ -38,7 +38,7 @@ func TestDgemm(t *testing.T) {
 
 	for i := range c {
 		if c[i] != d[i] {
-			t.Error("The result is incorrect.")
+			t.Fatal("the result is incorrect")
 		}
 	}
 }

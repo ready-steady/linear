@@ -21,7 +21,7 @@ this repository into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go
 to that directory:
 
 ```bash
-$ cd $GOPATH/src/github.com/gomath/linear/blas
+$ cd $GOPATH/src/github.com/gomath/linal/blas
 ```
 
 Then:

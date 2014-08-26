@@ -2,6 +2,7 @@ package matrix
 
 import (
 	"errors"
+
 	"github.com/gomath/linear/blas"
 )
 

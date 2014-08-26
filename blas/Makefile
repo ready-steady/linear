@@ -17,7 +17,10 @@ $(build): $(archive)
 $(archive):
 	curl $(url) -o $@
 
+install: $(library)
+	go install
+
 clean:
 	rm -rf $(archive) $(build) $(library)
 
-.PHONY: all clean
+.PHONY: all install clean

@@ -16,14 +16,19 @@ Run:
 $ go get github.com/gomath/linear/blas
 ```
 
-The above command might fail. Regardless of the outcome, continue with the
-following commands:
+The above command might fail. Regardless of the outcome, it will properly clone
+this repository into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go
+to that directory:
 
 ```bash
 $ cd $GOPATH/src/github.com/gomath/linear/blas
-$ make
-$ go install
 ```
 
-The `make` part requires [gfortran](https://gcc.gnu.org/wiki/GFortranBinaries)
-to be installed in the system.
+Then:
+
+```bash
+$ make install
+```
+
+This command requires [gfortran](https://gcc.gnu.org/wiki/GFortranBinaries) to
+be installed in the system.

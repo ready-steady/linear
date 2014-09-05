@@ -1,12 +1,12 @@
 library := libblas.a
-url := http://www.netlib.org/blas/blas.tgz
+archive := blas.tgz
+url := http://www.netlib.org/blas/$(archive)
 
 build := build
-archive := blas.tgz
 
-all: $(library)
+all: $(build)/$(library)
 
-$(library): $(build)
+$(build)/$(library): $(build)
 	$(MAKE) -C $(build)
 	mv $(build)/blas_LINUX.a $@
 

@@ -13,7 +13,7 @@ The list of available routines currently includes:
 Run:
 
 ```bash
-$ go get github.com/gomath/linear/blas
+$ go get github.com/go-math/linear/blas
 ```
 
 The above command might fail. Regardless of the outcome, it will properly clone
@@ -21,7 +21,7 @@ this repository into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go
 to that directory:
 
 ```bash
-$ cd $GOPATH/src/github.com/gomath/linal/blas
+$ cd $GOPATH/src/github.com/go-math/linal/blas
 ```
 
 Then:

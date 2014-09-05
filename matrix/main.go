@@ -3,7 +3,7 @@ package matrix
 import (
 	"errors"
 
-	"github.com/gomath/linal/blas"
+	"github.com/go-math/linal/blas"
 )
 
 type Matrix struct {

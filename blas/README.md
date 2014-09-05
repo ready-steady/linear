@@ -1,9 +1,9 @@
 # BLAS
 
-An adapter for the
-[Basic Linear Algebra Subprograms](http://www.netlib.org/blas/). The list of
-available routines is limited to those that are utilized by this project, and
-it currently includes:
+The package provides an interface to the
+[Basic Linear Algebra Subprograms](http://www.netlib.org/blas/).
+
+The list of available routines currently includes:
 
 * [dgemv](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html) and
 * [dgemm](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html).

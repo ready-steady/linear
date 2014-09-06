@@ -5,8 +5,8 @@ The package provides an interface to the
 
 The list of available routines currently includes:
 
-* [dgemv](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html) and
-* [dgemm](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html).
+* [DGEMV](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html) and
+* [DGEMM](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html).
 
 ## Installation
 

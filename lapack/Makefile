@@ -7,7 +7,7 @@ build := build
 all: $(build)/$(library)
 
 $(build)/$(library): $(build)
-	$(MAKE) -C $(build) lapacklib
+	$(MAKE) -C $(build) blaslib lapacklib
 
 $(build): $(archive)
 	mkdir $@

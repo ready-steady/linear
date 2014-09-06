@@ -24,6 +24,7 @@ $(build)/liblapack.a: $(build)
 $(build): $(archive)
 	mkdir -p $@
 	tar -xzf $(archive) --strip=1 -C $@
+	cp $(build)/make.inc.example $(build)/make.inc
 
 $(archive):
 	curl $(url) -o $@

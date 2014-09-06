@@ -1,10 +1,10 @@
 package lapack
 
 import (
-	"math/rand"
 	"testing"
 
 	"github.com/go-math/support/assert"
+	"github.com/go-math/support/fixture"
 )
 
 func TestDSYEV(t *testing.T) {
@@ -94,7 +94,7 @@ func TestDSYEV(t *testing.T) {
 
 func BenchmarkDSYEV(b *testing.B) {
 	n := 1000
-	A := genSymmetricMatrix(uint(n))
+	A := fixture.MakeSymMatrix(uint(n))
 	w := make([]float64, n)
 	lwork := 4 * n
 	work := make([]float64, lwork)
@@ -108,19 +108,4 @@ func BenchmarkDSYEV(b *testing.B) {
 			b.Fatalf("got %v instead of 0", info)
 		}
 	}
-}
-
-func genSymmetricMatrix(n uint) []float64 {
-	M := make([]float64, n*n)
-
-	for i := uint(0); i < n; i++ {
-		M[i*n+i] = rand.Float64()
-
-		for j := i + 1; j < n; j++ {
-			M[i*n+j] = rand.Float64()
-			M[j*n+i] = M[i*n+j]
-		}
-	}
-
-	return M
 }

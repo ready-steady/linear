@@ -11,7 +11,8 @@ type Matrix struct {
 	Data       []float64
 }
 
-// New creates a new matrix and populates it with the given data.
+// New creates a new matrix and sets its content to the given data without
+// copying it.
 func New(rows, cols uint32, data []float64) (*Matrix, error) {
 	if uint32(len(data)) != rows*cols {
 		return nil, errors.New("the data are of an invalid length")

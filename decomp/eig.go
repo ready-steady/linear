@@ -37,7 +37,7 @@ func SymEig(A *matrix.Matrix) (Q *matrix.Matrix, lambda *matrix.Matrix, err erro
 	temp := make([]float64, 4*m)
 	flag := 0
 
-	lapack.DSYEV('N', 'U', int(m), Q.Data, int(m), lambda.Data, temp, len(temp), &flag)
+	lapack.DSYEV('V', 'U', int(m), Q.Data, int(m), lambda.Data, temp, len(temp), &flag)
 
 	if flag != 0 {
 		return nil, nil, fmt.Errorf("LAPACK failed with code %v", flag)

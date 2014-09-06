@@ -72,8 +72,8 @@ func TestSymEig(t *testing.T) {
 		+3.026535012212483,
 	}
 
-	Q, lambda, _ := SymEig(A)
+	U, lambda, _ := SymEig(A)
 
-	assert.AlmostEqual(Q.Data, eigenVectors, t)
+	assert.AlmostEqual(U.Data, eigenVectors, t)
 	assert.AlmostEqual(lambda.Data, eigenValues, t)
 }

@@ -11,16 +11,16 @@ import (
 // SymEig performs the eigendecomposition assuming that the matrix is
 // symmetric:
 //
-//     A = Q * diag(lambda) * transpose(Q)
+//     A = U * diag(lambda) * transpose(U)
 //
 // where
 //
 //     A is a symmetric m-by-m matrix,
-//     Q is an orthogonal m-by-m matrix of the eigenvectors of A, and
+//     U is an orthogonal m-by-m matrix of the eigenvectors of A, and
 //     lambda is an m-element vector of the eigenvalues of A.
 //
 // https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices
-func SymEig(A *matrix.Matrix) (Q *matrix.Matrix, lambda *matrix.Matrix, err error) {
+func SymEig(A *matrix.Matrix) (U *matrix.Matrix, lambda *matrix.Matrix, err error) {
 	if !A.IsSquare() {
 		return nil, nil, errors.New("the matrix should be square")
 	}
@@ -29,7 +29,7 @@ func SymEig(A *matrix.Matrix) (Q *matrix.Matrix, lambda *matrix.Matrix, err erro
 
 	// TODO: Only the upper triangular matrix is actually needed; however,
 	// copying only that part might not be optimal for performance. Check!
-	Q = A.Copy()
+	U = A.Copy()
 
 	lambda = matrix.Zero(m, 1)
 
@@ -37,11 +37,11 @@ func SymEig(A *matrix.Matrix) (Q *matrix.Matrix, lambda *matrix.Matrix, err erro
 	temp := make([]float64, 4*m)
 	flag := 0
 
-	lapack.DSYEV('V', 'U', int(m), Q.Data, int(m), lambda.Data, temp, len(temp), &flag)
+	lapack.DSYEV('V', 'U', int(m), U.Data, int(m), lambda.Data, temp, len(temp), &flag)
 
 	if flag != 0 {
 		return nil, nil, fmt.Errorf("LAPACK failed with code %v", flag)
 	}
 
-	return Q, lambda, nil
+	return U, lambda, nil
 }

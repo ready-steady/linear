@@ -22,7 +22,7 @@ func TestAdd(t *testing.T) {
 }
 
 func BenchmarkMultiplyMatrix(b *testing.B) {
-	m := 1000
+	m := uint32(1000)
 
 	A := Zero(m, m)
 	B := Zero(m, m)
@@ -33,7 +33,7 @@ func BenchmarkMultiplyMatrix(b *testing.B) {
 }
 
 func BenchmarkMultiplyVector(b *testing.B) {
-	m := 1000
+	m := uint32(1000)
 
 	A := Zero(m, m)
 	x := Zero(m, 1)

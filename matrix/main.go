@@ -7,19 +7,19 @@ import (
 )
 
 type Matrix struct {
-	rows, cols int
-	data       []float64
+	Rows, Cols uint32
+	Data       []float64
 }
 
-func New(rows, cols int, data []float64) (*Matrix, error) {
-	if len(data) != rows*cols {
+func New(rows, cols uint32, data []float64) (*Matrix, error) {
+	if uint32(len(data)) != rows*cols {
 		return nil, errors.New("the data are of an invalid length")
 	}
 
 	return &Matrix{rows, cols, data}, nil
 }
 
-func Zero(rows, cols int) *Matrix {
+func Zero(rows, cols uint32) *Matrix {
 	return &Matrix{rows, cols, make([]float64, rows*cols)}
 }
 
@@ -36,12 +36,12 @@ func (a *Matrix) Multiply(b *Matrix) (*Matrix, error) {
 }
 
 func Equal(a, b *Matrix) bool {
-	if a.rows != b.rows || a.cols != b.cols {
+	if a.Rows != b.Rows || a.Cols != b.Cols {
 		return false
 	}
 
-	for i := range a.data {
-		if b.data[i] != b.data[i] {
+	for i := range a.Data {
+		if b.Data[i] != b.Data[i] {
 			return false
 		}
 	}
@@ -50,34 +50,34 @@ func Equal(a, b *Matrix) bool {
 }
 
 func Add(a, b *Matrix) (*Matrix, error) {
-	m, n := a.rows, b.cols
+	m, n := a.Rows, b.Cols
 
-	if m != b.rows || n != b.cols {
+	if m != b.Rows || n != b.Cols {
 		return nil, errors.New("the matrix dimensions are incompatible")
 	}
 
 	c := Zero(m, n)
 
-	for i := range a.data {
-		b.data[i] = a.data[i] + b.data[i]
+	for i := range a.Data {
+		b.Data[i] = a.Data[i] + b.Data[i]
 	}
 
 	return c, nil
 }
 
 func Multiply(a, b *Matrix) (*Matrix, error) {
-	m, n, k := a.rows, b.cols, a.cols
+	m, n, k := a.Rows, b.Cols, a.Cols
 
-	if k != b.rows {
+	if k != b.Rows {
 		return nil, errors.New("the matrix dimensions are incompatible")
 	}
 
 	c := Zero(m, n)
 
 	if n == 1 {
-		blas.DGEMV('n', m, n, 1, a.data, m, b.data, 1, 0, c.data, 1)
+		blas.DGEMV('N', int(m), int(n), 1, a.Data, int(m), b.Data, 1, 0, c.Data, 1)
 	} else {
-		blas.DGEMM('n', 'n', m, n, k, 1, a.data, m, b.data, k, 0, c.data, m)
+		blas.DGEMM('N', 'N', int(m), int(n), int(k), 1, a.Data, int(m), b.Data, int(k), 0, c.Data, int(m))
 	}
 
 	return c, nil

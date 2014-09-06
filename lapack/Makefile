@@ -4,10 +4,12 @@ url := http://www.netlib.org/lapack/$(archive)
 
 build := build
 
-all: $(build)/$(library)
+all: $(library)
 
-$(build)/$(library): $(build)
+$(library): $(build)
 	$(MAKE) -C $(build) blaslib lapacklib
+	cp $(build)/librefblas.a .
+	cp $(build)/liblapack.a $@
 
 $(build): $(archive)
 	mkdir $@
@@ -20,6 +22,6 @@ install: $(library)
 	go install
 
 clean:
-	rm -rf $(archive) $(build) $(library)
+	rm -rf $(archive) $(build) *.a
 
 .PHONY: all install clean

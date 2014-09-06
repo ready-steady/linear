@@ -3,7 +3,7 @@
 // http://www.netlib.org/lapack/
 package lapack
 
-// #cgo LDFLAGS: -Lbuild -llapack -lrefblas -lgfortran
+// #cgo LDFLAGS: -L. -llapack -lrefblas -lgfortran
 // #include "lapack.h"
 import "C"
 

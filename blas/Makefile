@@ -4,11 +4,11 @@ url := http://www.netlib.org/blas/$(archive)
 
 build := build
 
-all: $(build)/$(library)
+all: $(library)
 
-$(build)/$(library): $(build)
+$(library): $(build)
 	$(MAKE) -C $(build)
-	mv $(build)/blas_LINUX.a $@
+	cp $(build)/blas_LINUX.a $@
 
 $(build): $(archive)
 	mkdir $@

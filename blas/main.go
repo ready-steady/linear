@@ -3,7 +3,7 @@
 // http://www.netlib.org/blas/
 package blas
 
-// #cgo LDFLAGS: -Lbuild -lblas -lgfortran
+// #cgo LDFLAGS: -L. -lblas -lgfortran
 // #include "blas.h"
 import "C"
 

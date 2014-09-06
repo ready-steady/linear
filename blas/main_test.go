@@ -30,14 +30,14 @@ func TestDGEMM(t *testing.T) {
 	assert.Equal(C, []float64{40, 90, 50, 100, 50, 120, 60, 130}, t)
 }
 
-func BenchmarkDGEMM(t *testing.B) {
+func BenchmarkDGEMM(b *testing.B) {
 	m := 1000
 
 	A := make([]float64, m*m)
 	B := make([]float64, m*m)
 	C := make([]float64, m*m)
 
-	for i := 0; i < t.N; i++ {
+	for i := 0; i < b.N; i++ {
 		DGEMM('N', 'N', m, m, m, 1, A, m, B, m, 1, C, m)
 	}
 }

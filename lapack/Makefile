@@ -1,4 +1,4 @@
-library := liblapack.a
+library := liblapack_gomath.a
 archive := lapack-3.5.0.tgz
 url := http://www.netlib.org/lapack/$(archive)
 
@@ -8,7 +8,7 @@ all: $(library)
 
 $(library): $(build)
 	$(MAKE) -C $(build) blaslib lapacklib
-	cp $(build)/librefblas.a .
+	cp $(build)/librefblas.a librefblas_gomath.a
 	cp $(build)/liblapack.a $@
 
 $(build): $(archive)

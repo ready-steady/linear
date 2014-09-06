@@ -1,4 +1,4 @@
-library := libblas.a
+library := libblas_gomath.a
 archive := blas.tgz
 url := http://www.netlib.org/blas/$(archive)
 

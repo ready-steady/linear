@@ -15,9 +15,9 @@ Run:
 $ go get github.com/go-math/linear/lapack
 ```
 
-The above command might fail. Regardless of the outcome, it will properly clone
-this repository into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go
-to that directory:
+The above command will fail; however, it will properly clone this repository
+into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go to that
+directory:
 
 ```bash
 $ cd $GOPATH/src/github.com/go-math/linal/lapack

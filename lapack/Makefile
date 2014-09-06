@@ -1,27 +1,34 @@
-library := liblapack_gomath.a
 archive := lapack-3.5.0.tgz
 url := http://www.netlib.org/lapack/$(archive)
 
 build := build
+syso := main.syso
 
-all: $(library)
+all: $(syso)
 
-$(library): $(build)
-	$(MAKE) -C $(build) blaslib lapacklib
-	cp $(build)/librefblas.a librefblas_gomath.a
-	cp $(build)/liblapack.a $@
+install: $(syso)
+	go install
+
+$(syso): $(build)/librefblas.a $(build)/liblapack.a
+	mkdir -p $(build)/$@
+	cd $(build)/$@ && ar x ../librefblas.a
+	cd $(build)/$@ && ar x ../liblapack.a
+	ld -r -o $@ $(build)/$@/*.o
+
+$(build)/librefblas.a: $(build)
+	$(MAKE) -C $(build) blaslib
+
+$(build)/liblapack.a: $(build)
+	$(MAKE) -C $(build) lapacklib
 
 $(build): $(archive)
-	mkdir $@
+	mkdir -p $@
 	tar -xzf $(archive) --strip=1 -C $@
 
 $(archive):
 	curl $(url) -o $@
 
-install: $(library)
-	go install
-
 clean:
-	rm -rf $(archive) $(build) *.a
+	rm -rf $(archive) $(build) $(syso)
 
 .PHONY: all install clean

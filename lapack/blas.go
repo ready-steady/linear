@@ -1,9 +1,6 @@
-// Package blas provides an interface to the Basic Linear Algebra Subprograms.
-//
-// http://www.netlib.org/blas/
-package blas
+package lapack
 
-// #cgo LDFLAGS: -L. -lblas_gomath -lgfortran
+// #cgo LDFLAGS: -lgfortran
 // #include "blas.h"
 import "C"
 

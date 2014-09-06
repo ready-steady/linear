@@ -1,4 +1,4 @@
-package blas
+package lapack
 
 import (
 	"testing"

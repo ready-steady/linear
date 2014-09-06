@@ -1,13 +1,13 @@
 # LAPACK
 
-The package provides an interface to the
-[Linear Algebra PACKage](http://www.netlib.org/lapack/), which includes the
-[Basic Linear Algebra Subprograms](http://www.netlib.org/blas/).
+The package provides an interface to the [Linear Algebra
+PACKage](http://www.netlib.org/lapack/), which also includes the [Basic Linear
+Algebra Subprograms](http://www.netlib.org/blas/).
 
 The list of available routines currently includes:
 
-* [DGEMV](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html) (BLAS),
-* [DGEMM](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html) (BLAS), and
+* [DGEMM](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html),
+* [DGEMV](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html), and
 * [DSYEV](http://www.netlib.org/lapack/explore-html/dd/d4c/dsyev_8f.html).
 
 ## Installation

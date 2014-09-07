@@ -5,8 +5,8 @@ import (
 )
 
 func TestAdd(t *testing.T) {
-	A, _ := New(3, 3, []float64{1, 2, 3, 4, 5, 6, 7, 8, 9})
-	B, _ := New(3, 3, []float64{0, 1, 2, 3, 4, 3, 2, 1, 0})
+	A := New(3, 3, []float64{1, 2, 3, 4, 5, 6, 7, 8, 9})
+	B := New(3, 3, []float64{0, 1, 2, 3, 4, 3, 2, 1, 0})
 
 	C, err := A.Add(B)
 
@@ -14,7 +14,7 @@ func TestAdd(t *testing.T) {
 		t.Fatal("there should be no error")
 	}
 
-	D, _ := New(3, 3, []float64{1, 3, 5, 7, 9, 9, 9, 9, 9})
+	D := New(3, 3, []float64{1, 3, 5, 7, 9, 9, 9, 9, 9})
 
 	if !C.IsEqual(D) {
 		t.Fatal("the result is incorrect")

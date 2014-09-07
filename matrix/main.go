@@ -1,10 +1,6 @@
 // Package matrix provides algorithms for manipulating real matrices.
 package matrix
 
-import (
-	"errors"
-)
-
 // Matrix represents a real matrix.
 type Matrix struct {
 	Rows, Cols uint32
@@ -13,12 +9,8 @@ type Matrix struct {
 
 // New creates a new matrix and sets its content to the given data without
 // copying it.
-func New(rows, cols uint32, data []float64) (*Matrix, error) {
-	if uint32(len(data)) != rows*cols {
-		return nil, errors.New("the data are of an invalid length")
-	}
-
-	return &Matrix{rows, cols, data}, nil
+func New(rows, cols uint32, data []float64) *Matrix {
+	return &Matrix{rows, cols, data}
 }
 
 // Zero creates a new zeroed matrix.

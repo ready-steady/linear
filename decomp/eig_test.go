@@ -3,12 +3,13 @@ package decomp
 import (
 	"testing"
 
-	"github.com/go-math/linal/matrix"
 	"github.com/go-math/support/assert"
 )
 
 func TestSymEig(t *testing.T) {
-	A, _ := matrix.New(5, 5, []float64{
+	m := uint32(5)
+
+	A := []float64{
 		0.814723686393179,
 		0.097540404999410,
 		0.157613081677548,
@@ -34,7 +35,7 @@ func TestSymEig(t *testing.T) {
 		0.849129305868777,
 		0.933993247757551,
 		0.678735154857773,
-	})
+	}
 
 	eigenVectors := []float64{
 		+0.200767588469279,
@@ -72,8 +73,11 @@ func TestSymEig(t *testing.T) {
 		+3.026535012212483,
 	}
 
-	U, lambda, _ := SymEig(A)
+	U := make([]float64, m*m)
+	L := make([]float64, m*1)
 
-	assert.AlmostEqual(U.Data, eigenVectors, t)
-	assert.AlmostEqual(lambda.Data, eigenValues, t)
+	SymEig(A, U, L, 5)
+
+	assert.AlmostEqual(U, eigenVectors, t)
+	assert.AlmostEqual(L, eigenValues, t)
 }

@@ -1,47 +1,24 @@
 // Package matrix provides algorithms for manipulating real matrices.
 package matrix
 
-// Matrix represents a real matrix.
-type Matrix struct {
-	Rows, Cols uint32
-	Data       []float64
-}
+import (
+	"github.com/go-math/linal/lapack"
+)
 
-// New creates a new matrix and sets its content to the given data without
-// copying it.
-func New(rows, cols uint32, data []float64) *Matrix {
-	return &Matrix{rows, cols, data}
-}
-
-// Zero creates a new zeroed matrix.
-func Zero(rows, cols uint32) *Matrix {
-	return &Matrix{rows, cols, make([]float64, rows*cols)}
-}
-
-// Copy makes a copy of the matrix.
-func (A *Matrix) Copy() *Matrix {
-	B := &Matrix{A.Rows, A.Cols, make([]float64, A.Rows*A.Cols)}
-	copy(B.Data, A.Data)
-
-	return B
-}
-
-// IsEqual checks if two matrices are equal.
-func (A *Matrix) IsEqual(B *Matrix) bool {
-	if A.Rows != B.Rows || A.Cols != B.Cols {
-		return false
+// Add performs summation of an m-by-n matrix A with an m-by-n matrix B and
+// stores the result in a m-by-n matrix C.
+func Add(A, B, C []float64, m, n uint32) {
+	for i := range C {
+		C[i] = A[i] + B[i]
 	}
-
-	for i := range A.Data {
-		if B.Data[i] != B.Data[i] {
-			return false
-		}
-	}
-
-	return true
 }
 
-// IsSquare checks if the number of rows equals the number of columns.
-func (A *Matrix) IsSquare() bool {
-	return A.Rows == A.Cols
+// Multiply performs multiplication of an m-by-p matrix A with a p-by-n matrix
+// B and stores the result in an m-by-n matrix C.
+func Multiply(A, B, C []float64, m, p, n uint32) {
+	if n == 1 {
+		lapack.DGEMV('N', int(m), int(n), 1, A, int(m), B, 1, 0, C, 1)
+	} else {
+		lapack.DGEMM('N', 'N', int(m), int(n), int(p), 1, A, int(m), B, int(p), 0, C, int(m))
+	}
 }

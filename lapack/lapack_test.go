@@ -94,7 +94,7 @@ func TestDSYEV(t *testing.T) {
 
 func BenchmarkDSYEV(b *testing.B) {
 	n := 1000
-	A := fixture.MakeSymMatrix(uint(n))
+	A := fixture.MakeSymMatrix(uint32(n))
 	w := make([]float64, n)
 	lwork := 4 * n
 	work := make([]float64, lwork)

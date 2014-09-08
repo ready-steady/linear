@@ -6,17 +6,24 @@ import (
 	"github.com/go-math/support/assert"
 )
 
-func TestAdd(t *testing.T) {
-	m := uint32(3)
-	n := uint32(3)
+func TestMultiplyAdd(t *testing.T) {
+	m := uint32(2)
+	p := uint32(3)
+	n := uint32(4)
 
-	A := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9}
-	B := []float64{0, 1, 2, 3, 4, 3, 2, 1, 0}
-	C := make([]float64, m*n)
+	A := []float64{1, 2, 3, 4, 5, 6}
+	B := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+	C := []float64{1, 2, 3, 4, 5, 6, 7, 8}
+	D := make([]float64, m*n)
 
-	Add(A, B, C, m, n)
+	MultiplyAdd(A, B, C, D, m, p, n)
 
-	assert.Equal(C, []float64{1, 3, 5, 7, 9, 9, 9, 9, 9}, t)
+	assert.Equal(D, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
+	assert.Equal(C, []float64{1, 2, 3, 4, 5, 6, 7, 8}, t)
+
+	MultiplyAdd(A, B, C, C, m, p, n)
+
+	assert.Equal(C, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
 }
 
 func BenchmarkMultiplyMatrixMatrix(b *testing.B) {

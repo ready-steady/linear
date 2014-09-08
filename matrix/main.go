@@ -9,7 +9,7 @@ import (
 // result in an m-by-n matrix C.
 func Multiply(A, B, C []float64, m, p, n uint32) {
 	if n == 1 {
-		lapack.DGEMV('N', int(m), int(n), 1, A, int(m), B, 1, 0, C, 1)
+		lapack.DGEMV('N', int(m), int(p), 1, A, int(m), B, 1, 0, C, 1)
 	} else {
 		lapack.DGEMM('N', 'N', int(m), int(n), int(p), 1, A, int(m), B, int(p), 0, C, int(m))
 	}
@@ -24,7 +24,7 @@ func MultiplyAdd(A, B, C, D []float64, m, p, n uint32) {
 	}
 
 	if n == 1 {
-		lapack.DGEMV('N', int(m), int(n), 1, A, int(m), B, 1, 1, D, 1)
+		lapack.DGEMV('N', int(m), int(p), 1, A, int(m), B, 1, 1, D, 1)
 	} else {
 		lapack.DGEMM('N', 'N', int(m), int(n), int(p), 1, A, int(m), B, int(p), 1, D, int(m))
 	}

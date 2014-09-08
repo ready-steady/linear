@@ -9,7 +9,7 @@ import "unsafe"
 // DGEMV performs one of the matrix-vector operations
 //
 //     y := alpha * A * x + beta * y or
-//     y := alpha * transpose(A) * x + beta * y
+//     y := alpha * A**T * x + beta * y
 //
 // where alpha and beta are scalars, x and y are vectors, and A is an m-by-n
 // matrix.
@@ -40,7 +40,7 @@ func DGEMV(trans byte, m, n int, alpha float64, A []float64, ldA int,
 //  where op(X) is one of
 //
 //     op(X) = X or
-//     op(X) = transpose(X),
+//     op(X) = X**T,
 //
 // alpha and beta are scalars, and A, B, and C are matrices, with op(A)
 // an m-by-k matrix, op(B) a k-by-n matrix, and C an m-by-n matrix.

@@ -6,6 +6,20 @@ import (
 	"github.com/go-math/support/assert"
 )
 
+func TestMultiplyMatrixVector(t *testing.T) {
+	m := uint32(2)
+	p := uint32(4)
+	n := uint32(1)
+
+	A := []float64{1, 2, 3, 4, 5, 6, 7, 8}
+	B := []float64{1, 2, 3, 4}
+	C := make([]float64, m)
+
+	Multiply(A, B, C, m, p, n)
+
+	assert.Equal(C, []float64{50, 60}, t)
+}
+
 func TestMultiplyAdd(t *testing.T) {
 	m := uint32(2)
 	p := uint32(3)

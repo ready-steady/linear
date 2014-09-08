@@ -1,6 +1,6 @@
 package lapack
 
-// #cgo LDFLAGS: -lgfortran
+// #cgo LDFLAGS: -lgfortran -lm
 // #include "blas.h"
 import "C"
 

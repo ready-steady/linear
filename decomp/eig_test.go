@@ -74,10 +74,10 @@ func TestSymEig(t *testing.T) {
 	}
 
 	U := make([]float64, m*m)
-	L := make([]float64, m*1)
+	Λ := make([]float64, m*1)
 
-	SymEig(A, U, L, 5)
+	SymEig(A, U, Λ, 5)
 
 	assert.AlmostEqual(U, eigenVectors, t)
-	assert.AlmostEqual(L, eigenValues, t)
+	assert.AlmostEqual(Λ, eigenValues, t)
 }

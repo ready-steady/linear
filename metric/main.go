@@ -8,11 +8,11 @@ import (
 // L2 computes the Euclidean distance between two n-element vectors in the
 // n-dimensional Euclidean space.
 func L2(x, y []float64) float64 {
-	var sum, delta float64
+	var sum, Δ float64
 
 	for i := range x {
-		delta = x[i] - y[i]
-		sum += delta * delta
+		Δ = x[i] - y[i]
+		sum += Δ * Δ
 	}
 
 	return math.Sqrt(sum)

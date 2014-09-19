@@ -6,7 +6,7 @@ import (
 	"github.com/go-math/support/assert"
 )
 
-func TestSymEig(t *testing.T) {
+func TestSymEigen(t *testing.T) {
 	m := uint32(5)
 
 	A := []float64{
@@ -76,7 +76,7 @@ func TestSymEig(t *testing.T) {
 	U := make([]float64, m*m)
 	Λ := make([]float64, m*1)
 
-	SymEig(A, U, Λ, 5)
+	SymEigen(A, U, Λ, 5)
 
 	assert.AlmostEqual(U, eigenVectors, t)
 	assert.AlmostEqual(Λ, eigenValues, t)

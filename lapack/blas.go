@@ -4,8 +4,6 @@ package lapack
 // #include "blas.h"
 import "C"
 
-import "unsafe"
-
 // DGEMV performs one of the matrix-vector operations
 //
 //     y := alpha * A * x + beta * y or
@@ -18,19 +16,8 @@ import "unsafe"
 func DGEMV(trans byte, m, n int, alpha float64, A []float64, ldA int,
 	x []float64, incx int, beta float64, y []float64, incy int) {
 
-	C.dgemv_(
-		(*C.char)(unsafe.Pointer(&trans)),
-		(*C.int)(unsafe.Pointer(&m)),
-		(*C.int)(unsafe.Pointer(&n)),
-		(*C.double)(&alpha),
-		(*C.double)(&A[0]),
-		(*C.int)(unsafe.Pointer(&ldA)),
-		(*C.double)(&x[0]),
-		(*C.int)(unsafe.Pointer(&incx)),
-		(*C.double)(&beta),
-		(*C.double)(&y[0]),
-		(*C.int)(unsafe.Pointer(&incy)),
-	)
+	C.dgemv(C.char(trans), C.int(m), C.int(n), C.double(alpha), (*C.double)(&A[0]), C.int(ldA),
+		(*C.double)(&x[0]), C.int(incx), C.double(beta), (*C.double)(&y[0]), C.int(incy))
 }
 
 // DGEMM performs one of the matrix-matrix operations
@@ -49,19 +36,6 @@ func DGEMV(trans byte, m, n int, alpha float64, A []float64, ldA int,
 func DGEMM(transa, transb byte, m, n, k int, alpha float64, A []float64,
 	ldA int, B []float64, ldB int, beta float64, C []float64, ldC int) {
 
-	C.dgemm_(
-		(*C.char)(unsafe.Pointer(&transa)),
-		(*C.char)(unsafe.Pointer(&transb)),
-		(*C.int)(unsafe.Pointer(&m)),
-		(*C.int)(unsafe.Pointer(&n)),
-		(*C.int)(unsafe.Pointer(&k)),
-		(*C.double)(&alpha),
-		(*C.double)(&A[0]),
-		(*C.int)(unsafe.Pointer(&ldA)),
-		(*C.double)(&B[0]),
-		(*C.int)(unsafe.Pointer(&ldB)),
-		(*C.double)(&beta),
-		(*C.double)(&C[0]),
-		(*C.int)(unsafe.Pointer(&ldC)),
-	)
+	C.dgemm(C.char(transa), C.char(transb), C.int(m), C.int(n), C.int(k), C.double(alpha), (*C.double)(&A[0]),
+		C.int(ldA), (*C.double)(&B[0]), C.int(ldB), C.double(beta), (*C.double)(&C[0]), C.int(ldC))
 }

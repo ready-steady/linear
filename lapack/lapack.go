@@ -13,14 +13,6 @@ import "unsafe"
 func DSYEV(jobz, uplo byte, n int, A []float64, ldA int, w, work []float64,
 	lwork int, info *int) {
 
-	C.dsyev_(
-		(*C.char)(unsafe.Pointer(&jobz)),
-		(*C.char)(unsafe.Pointer(&uplo)),
-		(*C.int)(unsafe.Pointer(&n)),
-		(*C.double)(&A[0]),
-		(*C.int)(unsafe.Pointer(&ldA)),
-		(*C.double)(&w[0]),
-		(*C.double)(&work[0]),
-		(*C.int)(unsafe.Pointer(&lwork)),
-		(*C.int)(unsafe.Pointer(info)))
+	C.dsyev(C.char(jobz), C.char(uplo), C.int(n), (*C.double)(&A[0]), C.int(ldA),
+		(*C.double)(&w[0]), (*C.double)(&work[0]), C.int(lwork), (*C.int)(unsafe.Pointer(info)))
 }

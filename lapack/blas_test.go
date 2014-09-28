@@ -30,7 +30,7 @@ func TestDGEMM(t *testing.T) {
 	assert.Equal(C, []float64{40, 90, 50, 100, 50, 120, 60, 130}, t)
 }
 
-func BenchmarkDGEMV(b *testing.B) {
+func BenchmarkDGEMVFewLarge(b *testing.B) {
 	m := 1000
 
 	A := make([]float64, m*m)
@@ -39,6 +39,21 @@ func BenchmarkDGEMV(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		DGEMV('N', m, m, 1, A, m, x, 1, 1, y, 1)
+	}
+}
+
+func BenchmarkDGEMVManySmall(b *testing.B) {
+	M := 20000
+	m := 20
+
+	A := make([]float64, m*m)
+	x := make([]float64, m*1)
+	y := make([]float64, m*1)
+
+	for i := 0; i < b.N; i++ {
+		for j := 0; j < M; j++ {
+			DGEMV('N', m, m, 1, A, m, x, 1, 1, y, 1)
+		}
 	}
 }
 

@@ -41,16 +41,18 @@ func TestMultiplyAdd(t *testing.T) {
 }
 
 func BenchmarkMultiplyMatrixMatrix(b *testing.B) {
-	m := uint32(1000 + 1)
-	p := uint32(1000 + 2)
-	n := uint32(1000 + 3)
+	m := uint32(1000)
 
-	A := make([]float64, m*p)
-	B := make([]float64, p*n)
-	C := make([]float64, m*n)
+	A := make([]float64, m*m)
+	B := make([]float64, m*m)
+	C := make([]float64, m*m)
+
+	fillin(A, 1)
+	fillin(B, 1)
+	fillin(C, 1)
 
 	for i := 0; i < b.N; i++ {
-		Multiply(A, B, C, m, p, n)
+		Multiply(A, B, C, m, m, m)
 	}
 }
 
@@ -61,7 +63,17 @@ func BenchmarkMultiplyMatrixVector(b *testing.B) {
 	B := make([]float64, m*1)
 	C := make([]float64, m*m)
 
+	fillin(A, 1)
+	fillin(B, 1)
+	fillin(C, 1)
+
 	for i := 0; i < b.N; i++ {
 		Multiply(A, B, C, m, m, 1)
+	}
+}
+
+func fillin(a []float64, v float64) {
+	for i := range a {
+		a[i] = v
 	}
 }

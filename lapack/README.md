@@ -15,7 +15,7 @@ The list of available routines currently includes:
 Run:
 
 ```bash
-$ go get github.com/go-math/linear/lapack
+$ go get github.com/ready-steady/linear/lapack
 ```
 
 The above command will fail; however, it will properly clone this repository
@@ -23,7 +23,7 @@ into [`$GOPATH`](https://golang.org/doc/code.html#GOPATH). Go to that
 directory:
 
 ```bash
-$ cd $GOPATH/src/github.com/go-math/linal/lapack
+$ cd $GOPATH/src/github.com/ready-steady/linal/lapack
 ```
 
 Then:

@@ -3,7 +3,7 @@ package decomp
 import (
 	"fmt"
 
-	"github.com/go-math/linal/lapack"
+	"github.com/ready-steady/linal/lapack"
 )
 
 // SymEigen performs the eigendecomposition of a symmetric m-by-m matrix A and

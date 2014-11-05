@@ -3,7 +3,7 @@ package lapack
 import (
 	"testing"
 
-	"github.com/go-math/support/assert"
+	"github.com/ready-steady/support/assert"
 )
 
 func TestDGEMV(t *testing.T) {

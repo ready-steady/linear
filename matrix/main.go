@@ -2,7 +2,7 @@
 package matrix
 
 import (
-	"github.com/go-math/linal/lapack"
+	"github.com/ready-steady/linal/lapack"
 )
 
 // Multiply multiplies an m-by-p matrix A by a p-by-n matrix B and stores the

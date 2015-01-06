@@ -6,7 +6,7 @@ import (
 	"github.com/ready-steady/support/assert"
 )
 
-func TestSymEigen(t *testing.T) {
+func TestSymEig(t *testing.T) {
 	m := uint32(5)
 
 	A := []float64{
@@ -76,7 +76,7 @@ func TestSymEigen(t *testing.T) {
 	U := make([]float64, m*m)
 	Λ := make([]float64, m*1)
 
-	SymEigen(A, U, Λ, 5)
+	SymEig(A, U, Λ, 5)
 
 	assert.AlmostEqual(U, eigenVectors, t)
 	assert.AlmostEqual(Λ, eigenValues, t)

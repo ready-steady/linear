@@ -4,6 +4,7 @@ before_install:
   - sudo apt-get install gfortran
 
 install:
+  - go get -v -d ./...
   - cd lapack && make install
   - go test -v ./...
 

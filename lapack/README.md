@@ -32,7 +32,7 @@ Then:
 $ make install
 ```
 
-This command requires [gfortran][gfortran] to be installed in the system.
+This command requires [gfortran][gfortran] to be installed.
 
 [blas]: http://www.netlib.org/blas/
 [gfortran]: https://gcc.gnu.org/wiki/GFortranBinaries

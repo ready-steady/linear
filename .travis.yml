@@ -5,7 +5,7 @@ before_install:
 
 install:
   - go get -v -d ./...
-  - cd lapack && make install
+  - (cd lapack && make install)
   - go test -v ./...
 
 notifications:

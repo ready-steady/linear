@@ -7,7 +7,6 @@ install:
   - go get github.com/ready-steady/support/assert
   - (cd lapack && make install)
   - go build -v ./...
-  - go test -v ./...
 
 notifications:
   email:

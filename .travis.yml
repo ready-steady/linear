@@ -1,0 +1,7 @@
+language: go
+
+before_install:
+  - sudo apt-get install gfortran
+
+install:
+  - cd lapack && make install

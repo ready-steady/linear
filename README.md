@@ -1,4 +1,4 @@
-# Linear Algebra
+# Linear Algebra [![Build Status][travis-svg]][travis-url]
 
 The repository hosts four packages:
 
@@ -12,3 +12,6 @@ The repository hosts four packages:
 1. Fork the project.
 2. Implement your idea.
 3. Create a pull request.
+
+[travis-svg]: https://travis-ci.org/ready-steady/linal.svg?branch=master
+[travis-url]: https://travis-ci.org/ready-steady/linal

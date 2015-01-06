@@ -5,3 +5,8 @@ before_install:
 
 install:
   - cd lapack && make install
+  - go test -v ./...
+
+notifications:
+  email:
+    on_success: never

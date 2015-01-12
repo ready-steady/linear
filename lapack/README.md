@@ -13,30 +13,28 @@ The list of available routines currently includes:
 
 ## Installation
 
-Run:
+Fetch the package:
 
 ```bash
-$ go get github.com/ready-steady/linear/lapack
+go get -d github.com/ready-steady/linear/lapack
 ```
 
-The above command will fail; however, it will properly clone this repository
-into [`$GOPATH`][gopath]. Go to that directory:
+Go to the directory of the package:
 
 ```bash
-$ cd $GOPATH/src/github.com/ready-steady/linal/lapack
+cd $GOPATH/src/github.com/ready-steady/linal/lapack
 ```
 
-Then:
+Finally, install the package:
 
 ```bash
-$ make install
+make install
 ```
 
 This command requires [gfortran][gfortran] to be installed.
 
 [blas]: http://www.netlib.org/blas/
 [gfortran]: https://gcc.gnu.org/wiki/GFortranBinaries
-[gopath]: https://golang.org/doc/code.html#GOPATH
 [lapack]: http://www.netlib.org/lapack/
 
 [doc]: http://godoc.org/github.com/ready-steady/linal/lapack

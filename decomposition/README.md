@@ -4,4 +4,4 @@ The package provides algorithms for decomposing matrices.
 
 ## [Documentation][doc]
 
-[doc]: http://godoc.org/github.com/ready-steady/linal/decomp
+[doc]: http://godoc.org/github.com/ready-steady/linal/decomposition

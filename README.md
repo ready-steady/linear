@@ -2,7 +2,7 @@
 
 The repository hosts four packages:
 
-* [decomp](decomp),
+* [decomposition](decomposition),
 * [lapack](lapack),
 * [matrix](matrix), and
 * [metric](metric).

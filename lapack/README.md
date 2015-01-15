@@ -22,7 +22,7 @@ go get -d github.com/ready-steady/linear/lapack
 Go to the directory of the package:
 
 ```bash
-cd $GOPATH/src/github.com/ready-steady/linal/lapack
+cd $GOPATH/src/github.com/ready-steady/linear/lapack
 ```
 
 Finally, install the package:
@@ -37,4 +37,4 @@ This command requires [gfortran][gfortran] to be installed.
 [gfortran]: https://gcc.gnu.org/wiki/GFortranBinaries
 [lapack]: http://www.netlib.org/lapack/
 
-[doc]: http://godoc.org/github.com/ready-steady/linal/lapack
+[doc]: http://godoc.org/github.com/ready-steady/linear/lapack

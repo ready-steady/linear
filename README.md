@@ -13,5 +13,5 @@ The repository hosts four packages:
 2. Implement your idea.
 3. Create a pull request.
 
-[travis-svg]: https://travis-ci.org/ready-steady/linal.svg?branch=master
-[travis-url]: https://travis-ci.org/ready-steady/linal
+[travis-svg]: https://travis-ci.org/ready-steady/linear.svg?branch=master
+[travis-url]: https://travis-ci.org/ready-steady/linear

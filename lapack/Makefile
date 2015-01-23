@@ -1,7 +1,4 @@
-archive := lapack-3.5.0.tgz
-url := http://www.netlib.org/lapack/$(archive)
-
-build := build
+build := lapack
 syso := main.syso
 
 all: $(syso)
@@ -15,21 +12,16 @@ $(syso): $(build)/librefblas.a $(build)/liblapack.a
 	cd $(build)/$@ && ar x ../liblapack.a
 	ld -r -o $@ $(build)/$@/*.o
 
-$(build)/librefblas.a: $(build)
+$(build)/librefblas.a: $(build)/make.inc
 	$(MAKE) -C $(build) blaslib
 
-$(build)/liblapack.a: $(build)
+$(build)/liblapack.a: $(build)/make.inc
 	$(MAKE) -C $(build) lapacklib
 
-$(build): $(archive)
-	mkdir -p $@
-	tar -xzf $(archive) --strip=1 -C $@
-	cp $(build)/make.inc.example $(build)/make.inc
-
-$(archive):
-	curl $(url) -o $@
+$(build)/make.inc:
+	cp $(build)/make.inc.example $@
 
 clean:
-	rm -rf $(archive) $(build) $(syso)
+	rm -rf $(build) $(syso)
 
 .PHONY: all install clean

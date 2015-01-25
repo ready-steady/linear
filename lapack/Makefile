@@ -22,6 +22,7 @@ $(build)/make.inc:
 	cp $(build)/make.inc.example $@
 
 clean:
-	rm -rf $(build) $(syso)
+	test -f $(build)/make.inc && $(MAKE) -C $(build) clean
+	rm -rf $(syso) $(build)/$(syso) $(build)/*.a $(build)/INSTALL/test* $(build)/make.inc
 
 .PHONY: all install clean

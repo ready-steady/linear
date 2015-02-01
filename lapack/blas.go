@@ -24,7 +24,7 @@ func DGEMV(trans byte, m, n int, alpha float64, A []float64, ldA int,
 //
 //     C := alpha * op(A) * op(B) + beta * C
 //
-//  where op(X) is one of
+// where op(X) is one of
 //
 //     op(X) = X or
 //     op(X) = X**T,

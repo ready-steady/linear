@@ -7,7 +7,7 @@ import (
 )
 
 func TestSymEig(t *testing.T) {
-	m := uint32(5)
+	m := uint(5)
 
 	A := []float64{
 		0.814723686393179,

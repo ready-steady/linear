@@ -11,7 +11,7 @@ import (
 // m-by-1 matrix Λ, respectively.
 //
 // https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices
-func SymEig(A, U, Λ []float64, m uint32) error {
+func SymEig(A, U, Λ []float64, m uint) error {
 	if &A[0] != &U[0] {
 		// NOTE: Only the upper triangular matrix is actually needed; however,
 		// copying only that part might not be optimal for performance. Check!

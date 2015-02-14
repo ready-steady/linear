@@ -7,7 +7,7 @@ import (
 
 // Multiply multiplies an m-by-p matrix A by a p-by-n matrix B and stores the
 // result in an m-by-n matrix C.
-func Multiply(A, B, C []float64, m, p, n uint32) {
+func Multiply(A, B, C []float64, m, p, n uint) {
 	if n == 1 {
 		lapack.DGEMV('N', int(m), int(p), 1, A, int(m), B, 1, 0, C, 1)
 	} else {
@@ -18,7 +18,7 @@ func Multiply(A, B, C []float64, m, p, n uint32) {
 // MultiplyAdd multiplies an m-by-p matrix A by a p-by-n matrix B, sums the
 // resulting m-by-n matrix with an m-by-n matrix C, and stores the final result
 // in an m-by-n matrix D.
-func MultiplyAdd(A, B, C, D []float64, m, p, n uint32) {
+func MultiplyAdd(A, B, C, D []float64, m, p, n uint) {
 	if &C[0] != &D[0] {
 		copy(D, C)
 	}

@@ -7,9 +7,9 @@ import (
 )
 
 func TestMultiplyMatrixVector(t *testing.T) {
-	m := uint32(2)
-	p := uint32(4)
-	n := uint32(1)
+	m := uint(2)
+	p := uint(4)
+	n := uint(1)
 
 	A := []float64{1, 2, 3, 4, 5, 6, 7, 8}
 	B := []float64{1, 2, 3, 4}
@@ -21,9 +21,9 @@ func TestMultiplyMatrixVector(t *testing.T) {
 }
 
 func TestMultiplyAdd(t *testing.T) {
-	m := uint32(2)
-	p := uint32(3)
-	n := uint32(4)
+	m := uint(2)
+	p := uint(3)
+	n := uint(4)
 
 	A := []float64{1, 2, 3, 4, 5, 6}
 	B := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
@@ -41,7 +41,7 @@ func TestMultiplyAdd(t *testing.T) {
 }
 
 func BenchmarkMultiplyMatrixMatrix(b *testing.B) {
-	m := uint32(1000)
+	m := uint(1000)
 
 	A := make([]float64, m*m)
 	B := make([]float64, m*m)
@@ -57,7 +57,7 @@ func BenchmarkMultiplyMatrixMatrix(b *testing.B) {
 }
 
 func BenchmarkMultiplyMatrixVector(b *testing.B) {
-	m := uint32(1000)
+	m := uint(1000)
 
 	A := make([]float64, m*m)
 	B := make([]float64, m*1)

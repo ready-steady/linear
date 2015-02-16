@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/ready-steady/support/assert"
+	"github.com/ready-steady/support/fixture"
 )
 
 func TestSymEig(t *testing.T) {
@@ -74,10 +75,24 @@ func TestSymEig(t *testing.T) {
 	}
 
 	U := make([]float64, m*m)
-	Λ := make([]float64, m*1)
+	Λ := make([]float64, m)
 
-	SymEig(A, U, Λ, 5)
+	SymEig(A, U, Λ, m)
 
 	assert.AlmostEqual(U, eigenVectors, t)
 	assert.AlmostEqual(Λ, eigenValues, t)
+}
+
+func BenchmarkSymEig(b *testing.B) {
+	m := uint(1000)
+
+	A := fixture.MakeSymmetricMatrix(m)
+	U := make([]float64, m*m)
+	Λ := make([]float64, m)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		SymEig(A, U, Λ, m)
+	}
 }

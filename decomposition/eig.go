@@ -18,12 +18,17 @@ func SymEig(A, U, Λ []float64, m uint) error {
 		copy(U, A)
 	}
 
-	// The size of the temporary array should have at least 3*m-1.
-	temp := make([]float64, 4*m)
 	flag := 0
+	size := []float64{0}
 
-	lapack.DSYEV('V', 'U', int(m), U, int(m), Λ, temp, len(temp), &flag)
+	lapack.DSYEV('V', 'U', int(m), U, int(m), Λ, size, -1, &flag)
+	if flag != 0 {
+		return fmt.Errorf("LAPACK failed with code %v", flag)
+	}
 
+	work := make([]float64, int(size[0]))
+
+	lapack.DSYEV('V', 'U', int(m), U, int(m), Λ, work, len(work), &flag)
 	if flag != 0 {
 		return fmt.Errorf("LAPACK failed with code %v", flag)
 	}

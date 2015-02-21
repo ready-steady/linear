@@ -88,8 +88,8 @@ func TestDSYEV(t *testing.T) {
 		+2.529798046292787,
 	}
 
-	assert.AlmostEqual(A, eigenVectors, t)
-	assert.AlmostEqual(w, eigenValues, t)
+	assert.EqualWithin(A, eigenVectors, 2e-15, t)
+	assert.EqualWithin(w, eigenValues, 2e-15, t)
 }
 
 func BenchmarkDSYEV(b *testing.B) {

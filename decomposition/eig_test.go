@@ -79,8 +79,8 @@ func TestSymEig(t *testing.T) {
 
 	SymEig(A, U, Λ, m)
 
-	assert.AlmostEqual(U, eigenVectors, t)
-	assert.AlmostEqual(Λ, eigenValues, t)
+	assert.EqualWithin(U, eigenVectors, 2e-15, t)
+	assert.EqualWithin(Λ, eigenValues, 1e-15, t)
 }
 
 func BenchmarkSymEig(b *testing.B) {

@@ -1,11 +1,12 @@
 # Linear Algebra [![Build Status][travis-svg]][travis-url]
 
-The repository hosts four packages:
+The repository hosts five packages:
 
 * [decomposition](decomposition),
 * [lapack](lapack),
-* [matrix](matrix), and
-* [metric](metric).
+* [matrix](matrix),
+* [metric](metric), and
+* [system](system),
 
 ## Contributing
 

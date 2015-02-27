@@ -24,7 +24,7 @@ func ComputeTridiagonal(a, b, c, d []float64) []float64 {
 	}
 
 	dp := make([]float64, n)
-	x := make([]float64, n*nd)
+	x := make([]float64, nd*n)
 	for i := 0; i < nd; i++ {
 		dp[0] = d[i*n] / b[0]
 		for j := 1; j < n; j++ {

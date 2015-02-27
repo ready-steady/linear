@@ -1,6 +1,7 @@
 package system
 
 import (
+	"math/rand"
 	"testing"
 
 	"github.com/ready-steady/support/assert"
@@ -95,4 +96,27 @@ func TestComputeTridiagonal2D(t *testing.T) {
 	}
 
 	assert.EqualWithin(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
+}
+
+func BenchmarkComputeTridiagonal(b *testing.B) { benchmarkComputeTridiagonal(1000, 10, b) }
+
+func benchmarkComputeTridiagonal(n, nd int, bench *testing.B) {
+	A := make([]float64, 3*n)
+	for i := range A {
+		A[i] = rand.Float64() + 1
+	}
+	a := A[0*n : 1*n]
+	b := A[1*n : 2*n]
+	c := A[2*n : 3*n]
+
+	d := make([]float64, nd*n)
+	for i := range b {
+		d[i] = rand.Float64() + 1
+	}
+
+	bench.ResetTimer()
+
+	for i := 0; i < bench.N; i++ {
+		ComputeTridiagonal(a, b, c, d)
+	}
 }

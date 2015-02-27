@@ -8,21 +8,11 @@ package system
 //     a(i-1)*x(i-1) + b(  i)*x(  i) + c(i+1)*x(i+1) = d(  i), for i = 1, ..., (n-2),
 //     a(n-2)*x(n-2) + b(n-1)*x(n-1)                 = d(n-1)
 //
-// Note that a(n-1) and c(0) are not involved in the system. The right-hand side
-// can be given as a matrix, in which case the system is solved for each column
-// of that matrix.
+// Note that a(n-1) and c(0) are not involved in the system. If d is a matrix,
+// the system is solved for each column of that matrix.
 func ComputeTridiagonal(a, b, c, d []float64) []float64 {
 	n := len(b)
 	nd := len(d) / n
-
-	x := make([]float64, nd*n)
-
-	if n == 1 {
-		for j := 0; j < nd; j++ {
-			x[j] = d[j] / b[0]
-		}
-		return x
-	}
 
 	bp := make([]float64, n-1)
 	cp := make([]float64, n-1)
@@ -34,6 +24,7 @@ func ComputeTridiagonal(a, b, c, d []float64) []float64 {
 	}
 
 	dp := make([]float64, n)
+	x := make([]float64, nd*n)
 	for i := 0; i < nd; i++ {
 		dp[0] = d[i*n] / b[0]
 		for j := 1; j < n; j++ {

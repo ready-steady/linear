@@ -6,14 +6,7 @@ import (
 	"github.com/ready-steady/support/assert"
 )
 
-func TestComputeTridiagonal1D1E(t *testing.T) {
-	b := []float64{2}
-	d := []float64{84}
-	x := []float64{42}
-	assert.Equal(ComputeTridiagonal([]float64{}, b, []float64{}, d), x, t)
-}
-
-func TestComputeTridiagonal1D20E(t *testing.T) {
+func TestComputeTridiagonal1D(t *testing.T) {
 	a := []float64{
 		4.8075817741978699e-01, 1.2692671000342037e-01, 4.9831340044932859e-01,
 		3.9611537773884853e-01, 8.4803219799756557e-01, 3.8361564524640535e-01,
@@ -63,14 +56,7 @@ func TestComputeTridiagonal1D20E(t *testing.T) {
 	assert.EqualWithin(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
 }
 
-func TestComputeTridiagonal2D1E(t *testing.T) {
-	b := []float64{2}
-	d := []float64{84, 138}
-	x := []float64{42, 69}
-	assert.Equal(ComputeTridiagonal([]float64{}, b, []float64{}, d), x, t)
-}
-
-func TestComputeTridiagonal2D10E(t *testing.T) {
+func TestComputeTridiagonal2D(t *testing.T) {
 	a := []float64{
 		4.1702200470257400e-01, 7.2032449344215810e-01, 1.1437481734488664e-04,
 		3.0233257263183977e-01, 1.4675589081711304e-01, 9.2338594768797799e-02,

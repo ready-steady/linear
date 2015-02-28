@@ -1,8 +1,9 @@
 #ifndef LAPACK_H
 #define LAPACK_H
 
-extern void dsyev_(char *JOBZ, char *UPLO, int *N, double *A, int *LDA, double *W,
-	double *WORK, int *LWORK, int *INFO);
+extern void dsyev_(const char *JOBZ, const char *UPLO, const int *N,
+	double *A, const int *LDA, double *W, double *WORK, const int *LWORK,
+	int *INFO);
 
 void dsyev(char JOBZ, char UPLO, int N, double *A, int LDA, double *W,
 	double *WORK, int LWORK, int *INFO) {

@@ -6,7 +6,8 @@ also includes the [Basic Linear Algebra Subprograms][blas].
 The list of available routines currently includes:
 
 * [DGEMM](http://www.netlib.org/lapack/explore-html/dc/da8/dgemm_8f.html),
-* [DGEMV](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html), and
+* [DGEMV](http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html),
+* [DGTSV](http://www.netlib.org/lapack/explore-html/d1/db3/dgtsv_8f.html), and
 * [DSYEV](http://www.netlib.org/lapack/explore-html/dd/d4c/dsyev_8f.html).
 
 ## [Documentation][doc]

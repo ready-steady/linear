@@ -10,9 +10,9 @@ import "unsafe"
 // eigenvectors for symmetric matrices.
 //
 // http://www.netlib.org/lapack/explore-html/dd/d4c/dsyev_8f.html
-func DSYEV(jobz, uplo byte, n int, A []float64, ldA int, w, work []float64,
-	lwork int, info *int) {
+func DSYEV(JOBZ, UPLO byte, N int, A []float64, LDA int, W, WORK []float64,
+	LWORK int, INFO *int) {
 
-	C.dsyev(C.char(jobz), C.char(uplo), C.int(n), (*C.double)(&A[0]), C.int(ldA),
-		(*C.double)(&w[0]), (*C.double)(&work[0]), C.int(lwork), (*C.int)(unsafe.Pointer(info)))
+	C.dsyev(C.char(JOBZ), C.char(UPLO), C.int(N), (*C.double)(&A[0]), C.int(LDA),
+		(*C.double)(&W[0]), (*C.double)(&WORK[0]), C.int(LWORK), (*C.int)(unsafe.Pointer(INFO)))
 }

@@ -5,6 +5,7 @@ before_install:
 
 install:
   - go get -t ./...
+  - git submodule update --init
   - (cd lapack && make install)
   - go build -v ./...
 

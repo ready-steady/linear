@@ -6,7 +6,7 @@ before_install:
 install:
   - go get -d -t ./...
   - git submodule update --init
-  - (cd $GOPATH/src/github.com/ready-steady/lapack && make install)
+  - (cd /home/travis/gopath/src/github.com/ready-steady/lapack && make install)
   - go test -v ./...
 
 notifications:

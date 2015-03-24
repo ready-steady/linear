@@ -3,8 +3,8 @@ package decomposition
 import (
 	"testing"
 
-	"github.com/ready-steady/support/assert"
-	"github.com/ready-steady/support/fixture"
+	"github.com/ready-steady/assert"
+	"github.com/ready-steady/fixture"
 )
 
 func TestSymEig(t *testing.T) {

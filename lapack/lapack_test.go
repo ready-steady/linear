@@ -3,8 +3,8 @@ package lapack
 import (
 	"testing"
 
-	"github.com/ready-steady/support/assert"
-	"github.com/ready-steady/support/fixture"
+	"github.com/ready-steady/assert"
+	"github.com/ready-steady/fixture"
 )
 
 func TestDGTSV(t *testing.T) {

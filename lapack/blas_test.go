@@ -3,7 +3,7 @@ package lapack
 import (
 	"testing"
 
-	"github.com/ready-steady/support/assert"
+	"github.com/ready-steady/assert"
 )
 
 func TestDGEMV(t *testing.T) {

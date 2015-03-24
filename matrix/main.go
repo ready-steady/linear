@@ -2,7 +2,7 @@
 package matrix
 
 import (
-	"github.com/ready-steady/linear/lapack"
+	"github.com/ready-steady/lapack"
 )
 
 // Multiply multiplies an m-by-p matrix A by a p-by-n matrix B and stores the

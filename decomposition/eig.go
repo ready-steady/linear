@@ -3,7 +3,7 @@ package decomposition
 import (
 	"fmt"
 
-	"github.com/ready-steady/linear/lapack"
+	"github.com/ready-steady/lapack"
 )
 
 // SymEig performs the eigendecomposition of a symmetric m-by-m matrix A and

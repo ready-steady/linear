@@ -1,3 +1,0 @@
-[submodule "lapack/lapack"]
-	path = lapack/lapack
-	url = https://github.com/copies/lapack

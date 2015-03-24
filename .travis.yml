@@ -4,10 +4,10 @@ before_install:
   - sudo apt-get install gfortran
 
 install:
-  - go get -t ./...
+  - go get -d -t ./...
   - git submodule update --init
-  - (cd lapack && make install)
-  - go build -v ./...
+  - (cd $GOPATH/src/github.com/ready-steady/lapack && make install)
+  - go test -v ./...
 
 notifications:
   email:

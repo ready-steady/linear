@@ -1,6 +1,10 @@
 # Linear Algebra [![Build Status][travis-svg]][travis-url]
 
-The repository hosts four packages:
+The package provides a linear-algebra toolbox.
+
+## Subpackages
+
+The packages contains four subpackages:
 
 * [decomposition](decomposition),
 * [matrix](matrix),

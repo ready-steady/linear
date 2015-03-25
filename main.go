@@ -2,12 +2,12 @@
 package linear
 
 // Tensor computes the tensor product of a number of vectors.
-func Tensor(data ...[]float64) []float64 {
-	nd := len(data)
+func Tensor(vectors ...[]float64) []float64 {
+	nd := len(vectors)
 
 	dims := make([]int, nd)
 	for i := 0; i < nd; i++ {
-		dims[i] = len(data[i])
+		dims[i] = len(vectors[i])
 	}
 
 	aprod := make([]int, nd)
@@ -29,7 +29,7 @@ func Tensor(data ...[]float64) []float64 {
 		for j := 0; j < dprod[i]; j++ {
 			for k := 0; k < dims[i]; k++ {
 				for l := 0; l < aprod[i]; l++ {
-					tensor[z] = data[i][k]
+					tensor[z] = vectors[i][k]
 					z++
 				}
 			}

@@ -1,6 +1,7 @@
 // Package linear provides a linear-algebra toolbox.
 package linear
 
+// Tensor computes the tensor product of a number of vectors.
 func Tensor(data ...[]float64) []float64 {
 	nd := len(data)
 

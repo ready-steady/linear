@@ -1,4 +1,4 @@
-package decomposition
+package matrix
 
 import (
 	"testing"

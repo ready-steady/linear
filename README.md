@@ -6,9 +6,8 @@ The package provides a linear-algebra toolbox.
 
 ## Subpackages
 
-The packages contains four subpackages:
+The packages contains three subpackages:
 
-* [decomposition](decomposition),
 * [matrix](matrix),
 * [metric](metric), and
 * [system](system).

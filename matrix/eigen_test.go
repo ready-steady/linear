@@ -7,7 +7,7 @@ import (
 	"github.com/ready-steady/fixture"
 )
 
-func TestSymEig(t *testing.T) {
+func TestSymmetricEigen(t *testing.T) {
 	m := uint(5)
 
 	A := []float64{
@@ -77,13 +77,13 @@ func TestSymEig(t *testing.T) {
 	U := make([]float64, m*m)
 	Λ := make([]float64, m)
 
-	SymEig(A, U, Λ, m)
+	SymmetricEigen(A, U, Λ, m)
 
 	assert.EqualWithin(U, eigenVectors, 2e-15, t)
 	assert.EqualWithin(Λ, eigenValues, 1e-15, t)
 }
 
-func BenchmarkSymEig(b *testing.B) {
+func BenchmarkSymmeticEigen(b *testing.B) {
 	m := uint(1000)
 
 	A := fixture.MakeSymmetricMatrix(m)
@@ -93,6 +93,6 @@ func BenchmarkSymEig(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		SymEig(A, U, Λ, m)
+		SymmetricEigen(A, U, Λ, m)
 	}
 }

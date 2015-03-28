@@ -6,12 +6,12 @@ import (
 	"github.com/ready-steady/lapack"
 )
 
-// SymEig performs the eigendecomposition of a symmetric m-by-m matrix A and
-// stores the resulting eigenvectors and eigenvalues in an m-by-m matrix U and
-// m-by-1 matrix Λ, respectively.
+// SymmetricEigen performs the eigendecomposition of a symmetric m-by-m matrix A
+// and stores the resulting eigenvectors and eigenvalues in an m-by-m matrix U
+// and m-by-1 matrix Λ, respectively.
 //
 // https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices
-func SymEig(A, U, Λ []float64, m uint) error {
+func SymmetricEigen(A, U, Λ []float64, m uint) error {
 	if &A[0] != &U[0] {
 		// NOTE: Only the upper triangular matrix is actually needed; however,
 		// copying only that part might not be optimal for performance. Check!

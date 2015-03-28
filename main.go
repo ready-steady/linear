@@ -25,12 +25,12 @@ func Tensor(vectors ...[]float64) []float64 {
 	np := dims[0] * dprod[0]
 
 	tensor := make([]float64, np*nd)
-	for i, z := 0, 0; i < nd; i++ {
-		for j := 0; j < dprod[i]; j++ {
+	for i := 0; i < nd; i++ {
+		for j, z := 0, i; j < dprod[i]; j++ {
 			for k := 0; k < dims[i]; k++ {
 				for l := 0; l < aprod[i]; l++ {
 					tensor[z] = vectors[i][k]
-					z++
+					z += nd
 				}
 			}
 		}

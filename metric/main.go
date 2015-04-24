@@ -1,4 +1,6 @@
 // Package metric provides functions for computing metrics.
+//
+// https://en.wikipedia.org/wiki/Metric_(mathematics)
 package metric
 
 import (

@@ -1,6 +1,6 @@
 # Matrix
 
-The package provides algorithms for manipulating real matrices.
+The package provides algorithms for manipulating matrices.
 
 ## [Documentation][doc]
 

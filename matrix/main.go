@@ -1,4 +1,4 @@
-// Package matrix provides algorithms for manipulating real matrices.
+// Package matrix provides algorithms for manipulating matrices.
 package matrix
 
 import (

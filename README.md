@@ -1,4 +1,4 @@
-# Linear Algebra [![Build Status][travis-svg]][travis-url]
+# Linear Algebra [![Build Status][status-svg]][status-url]
 
 The package provides a linear-algebra toolbox.
 
@@ -6,8 +6,9 @@ The package provides a linear-algebra toolbox.
 
 ## Subpackages
 
-The packages contains three subpackages:
+The packages contains four subpackages:
 
+* [decomposition](decomposition),
 * [matrix](matrix),
 * [metric](metric), and
 * [system](system).
@@ -19,5 +20,5 @@ The packages contains three subpackages:
 3. Create a pull request.
 
 [doc]: http://godoc.org/github.com/ready-steady/linear
-[travis-svg]: https://travis-ci.org/ready-steady/linear.svg?branch=master
-[travis-url]: https://travis-ci.org/ready-steady/linear
+[status-svg]: https://travis-ci.org/ready-steady/linear.svg?branch=master
+[status-url]: https://travis-ci.org/ready-steady/linear

@@ -6,15 +6,14 @@ import (
 	"github.com/ready-steady/lapack"
 )
 
-// SymmetricEigen performs the eigendecomposition of a symmetric m-by-m matrix A
-// and stores the resulting eigenvectors and eigenvalues in an m-by-m matrix U
-// and m-by-1 matrix Λ, respectively.
+// SymmetricEigen computes the eigendecomposition of a symmetric m-by-m matrix
+// A. The eigenvectors and eigenvalues are stored in an m-by-m matrix U and
+// m-by-1 matrix Λ, respectively, in the ascending order of the eigenvalues.
 //
 // https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Real_symmetric_matrices
 func SymmetricEigen(A, U, Λ []float64, m uint) error {
 	if &A[0] != &U[0] {
-		// NOTE: Only the upper triangular matrix is actually needed; however,
-		// copying only that part might not be optimal for performance. Check!
+		// Only the upper triangular matrix actually needs to be copied.
 		copy(U, A)
 	}
 

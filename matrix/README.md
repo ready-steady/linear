@@ -1,6 +1,6 @@
 # Matrix
 
-The package provides algorithms for manipulating matrices.
+The package provides basic matrix operations.
 
 ## [Documentation][doc]
 

@@ -1,7 +1,10 @@
 language: go
+sudo: false
 
-before_install:
-  - sudo apt-get install gfortran
+addons:
+  apt:
+    packages:
+      - gfortran
 
 install:
   - go get -d -t ./...
@@ -9,5 +12,4 @@ install:
   - go test -v ./...
 
 notifications:
-  email:
-    on_success: never
+  email: false

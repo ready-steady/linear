@@ -8,7 +8,7 @@ addons:
 
 install:
   - go get -d -t ./...
-  - (cd /home/travis/gopath/src/github.com/ready-steady/lapack && git submodule update --init && make install)
+  - (cd $GOPATH/src/github.com/ready-steady/lapack && git submodule update --init && make install)
   - go test -v ./...
 
 notifications:

@@ -6,6 +6,10 @@ import (
 	"github.com/ready-steady/assert"
 )
 
+func TestIdentity(t *testing.T) {
+	assert.Equal(Identity(3), []float64{1, 0, 0, 0, 1, 0, 0, 0, 1}, t)
+}
+
 func TestMultiplyMatrixVector(t *testing.T) {
 	m := uint(2)
 	p := uint(4)

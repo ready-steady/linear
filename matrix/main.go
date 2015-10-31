@@ -5,6 +5,15 @@ import (
 	"github.com/ready-steady/lapack"
 )
 
+/// Identity constructs an m-by-m identity matrix.
+func Identity(m uint) []float64 {
+	A := make([]float64, m*m)
+	for i := uint(0); i < m; i++ {
+		A[i*m+i] = 1
+	}
+	return A
+}
+
 // Multiply multiplies an m-by-p matrix A by a p-by-n matrix B and stores the
 // result in an m-by-n matrix C.
 func Multiply(A, B, C []float64, m, p, n uint) {

@@ -5,7 +5,7 @@ import (
 	"github.com/ready-steady/lapack"
 )
 
-/// Identity constructs an m-by-m identity matrix.
+// Identity constructs an m-by-m identity matrix.
 func Identity(m uint) []float64 {
 	A := make([]float64, m*m)
 	for i := uint(0); i < m; i++ {

@@ -6,12 +6,12 @@ import (
 	"github.com/ready-steady/assert"
 )
 
-func TestTensor(t *testing.T) {
-	x := []float64{1, 2, 3}
-	y := []float64{4, 5, 6}
-	z := []float64{7, 8, 9}
+func TestTensorUint64(t *testing.T) {
+	x := []uint64{1, 2, 3}
+	y := []uint64{4, 5, 6}
+	z := []uint64{7, 8, 9}
 
-	T := []float64{
+	T := []uint64{
 		1, 4, 7,
 		2, 4, 7,
 		3, 4, 7,
@@ -41,14 +41,14 @@ func TestTensor(t *testing.T) {
 		3, 6, 9,
 	}
 
-	assert.Equal(Tensor(x, y, z), T, t)
+	assert.Equal(TensorUint64(x, y, z), T, t)
 
-	x = []float64{1, 2}
-	y = []float64{3, 4}
-	z = []float64{5, 6}
-	w := []float64{7, 8}
+	x = []uint64{1, 2}
+	y = []uint64{3, 4}
+	z = []uint64{5, 6}
+	w := []uint64{7, 8}
 
-	T = []float64{
+	T = []uint64{
 		1, 3, 5, 7,
 		2, 3, 5, 7,
 		1, 4, 5, 7,
@@ -67,5 +67,5 @@ func TestTensor(t *testing.T) {
 		2, 4, 6, 8,
 	}
 
-	assert.Equal(Tensor(x, y, z, w), T, t)
+	assert.Equal(TensorUint64(x, y, z, w), T, t)
 }

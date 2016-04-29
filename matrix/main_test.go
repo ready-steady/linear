@@ -42,6 +42,20 @@ func TestIdentity(t *testing.T) {
 	assert.Equal(Identity(3), []float64{1, 0, 0, 0, 1, 0, 0, 0, 1}, t)
 }
 
+func TestInverse(t *testing.T) {
+	n := uint(3)
+	a := []float64{1, -1, 0, 0, 5, 3, 2, 0, -9}
+
+	expectedA := []float64{
+		+8.823529411764706e-01, +1.764705882352941e-01, +5.882352941176472e-02,
+		-1.176470588235294e-01, +1.764705882352941e-01, +5.882352941176472e-02,
+		+1.960784313725490e-01, +3.921568627450981e-02, -9.803921568627452e-02,
+	}
+
+	assert.Equal(Inverse(a, n), nil, t)
+	assert.EqualWithin(a, expectedA, 1e-15, t)
+}
+
 func TestMultiplyMatrixVector(t *testing.T) {
 	m := uint(2)
 	p := uint(4)

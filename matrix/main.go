@@ -2,6 +2,8 @@
 package matrix
 
 import (
+	"fmt"
+
 	"github.com/ready-steady/lapack"
 )
 
@@ -12,6 +14,27 @@ func Identity(m uint) []float64 {
 		a[i*m+i] = 1
 	}
 	return a
+}
+
+// Inverse computes the inverse of an m-by-m matrix.
+func Inverse(a []float64, m uint) error {
+	ipiv := make([]int, m+1)
+	info := 0
+
+	lapack.DGETRF(int(m), int(m), a, int(m), ipiv, &info)
+	if info != 0 {
+		return fmt.Errorf("LAPACK failed with code %v", info)
+	}
+
+	lwork := m * m
+	work := make([]float64, lwork)
+
+	lapack.DGETRI(int(m), a, int(m), ipiv, work, int(lwork), &info)
+	if info != 0 {
+		return fmt.Errorf("LAPACK failed with code %v", info)
+	}
+
+	return nil
 }
 
 // Multiply multiplies an m-by-p matrix A by a p-by-n matrix B and stores the

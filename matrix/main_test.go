@@ -6,6 +6,38 @@ import (
 	"github.com/ready-steady/assert"
 )
 
+func BenchmarkMultiplyMatrixMatrix(bench *testing.B) {
+	m := uint(1000)
+
+	a := make([]float64, m*m)
+	b := make([]float64, m*m)
+	c := make([]float64, m*m)
+
+	fillin(a, 1)
+	fillin(b, 1)
+	fillin(c, 1)
+
+	for i := 0; i < bench.N; i++ {
+		Multiply(a, b, c, m, m, m)
+	}
+}
+
+func BenchmarkMultiplyMatrixVector(bench *testing.B) {
+	m := uint(1000)
+
+	a := make([]float64, m*m)
+	b := make([]float64, m*1)
+	c := make([]float64, m*m)
+
+	fillin(a, 1)
+	fillin(b, 1)
+	fillin(c, 1)
+
+	for i := 0; i < bench.N; i++ {
+		Multiply(a, b, c, m, m, 1)
+	}
+}
+
 func TestIdentity(t *testing.T) {
 	assert.Equal(Identity(3), []float64{1, 0, 0, 0, 1, 0, 0, 0, 1}, t)
 }
@@ -15,13 +47,13 @@ func TestMultiplyMatrixVector(t *testing.T) {
 	p := uint(4)
 	n := uint(1)
 
-	A := []float64{1, 2, 3, 4, 5, 6, 7, 8}
-	B := []float64{1, 2, 3, 4}
-	C := make([]float64, m)
+	a := []float64{1, 2, 3, 4, 5, 6, 7, 8}
+	b := []float64{1, 2, 3, 4}
+	c := make([]float64, m)
 
-	Multiply(A, B, C, m, p, n)
+	Multiply(a, b, c, m, p, n)
 
-	assert.Equal(C, []float64{50, 60}, t)
+	assert.Equal(c, []float64{50, 60}, t)
 }
 
 func TestMultiplyAdd(t *testing.T) {
@@ -29,51 +61,19 @@ func TestMultiplyAdd(t *testing.T) {
 	p := uint(3)
 	n := uint(4)
 
-	A := []float64{1, 2, 3, 4, 5, 6}
-	B := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-	C := []float64{1, 2, 3, 4, 5, 6, 7, 8}
-	D := make([]float64, m*n)
+	a := []float64{1, 2, 3, 4, 5, 6}
+	b := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+	c := []float64{1, 2, 3, 4, 5, 6, 7, 8}
+	d := make([]float64, m*n)
 
-	MultiplyAdd(A, B, C, D, m, p, n)
+	MultiplyAdd(a, b, c, d, m, p, n)
 
-	assert.Equal(D, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
-	assert.Equal(C, []float64{1, 2, 3, 4, 5, 6, 7, 8}, t)
+	assert.Equal(d, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
+	assert.Equal(c, []float64{1, 2, 3, 4, 5, 6, 7, 8}, t)
 
-	MultiplyAdd(A, B, C, C, m, p, n)
+	MultiplyAdd(a, b, c, c, m, p, n)
 
-	assert.Equal(C, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
-}
-
-func BenchmarkMultiplyMatrixMatrix(b *testing.B) {
-	m := uint(1000)
-
-	A := make([]float64, m*m)
-	B := make([]float64, m*m)
-	C := make([]float64, m*m)
-
-	fillin(A, 1)
-	fillin(B, 1)
-	fillin(C, 1)
-
-	for i := 0; i < b.N; i++ {
-		Multiply(A, B, C, m, m, m)
-	}
-}
-
-func BenchmarkMultiplyMatrixVector(b *testing.B) {
-	m := uint(1000)
-
-	A := make([]float64, m*m)
-	B := make([]float64, m*1)
-	C := make([]float64, m*m)
-
-	fillin(A, 1)
-	fillin(B, 1)
-	fillin(C, 1)
-
-	for i := 0; i < b.N; i++ {
-		Multiply(A, B, C, m, m, 1)
-	}
+	assert.Equal(c, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
 }
 
 func fillin(a []float64, v float64) {

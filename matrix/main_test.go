@@ -13,9 +13,9 @@ func BenchmarkMultiplyMatrixMatrix(bench *testing.B) {
 	b := make([]float64, m*m)
 	c := make([]float64, m*m)
 
-	fillin(a, 1)
-	fillin(b, 1)
-	fillin(c, 1)
+	fillin(a, 1.0)
+	fillin(b, 1.0)
+	fillin(c, 1.0)
 
 	for i := 0; i < bench.N; i++ {
 		Multiply(a, b, c, m, m, m)
@@ -29,9 +29,9 @@ func BenchmarkMultiplyMatrixVector(bench *testing.B) {
 	b := make([]float64, m*1)
 	c := make([]float64, m*m)
 
-	fillin(a, 1)
-	fillin(b, 1)
-	fillin(c, 1)
+	fillin(a, 1.0)
+	fillin(b, 1.0)
+	fillin(c, 1.0)
 
 	for i := 0; i < bench.N; i++ {
 		Multiply(a, b, c, m, m, 1)
@@ -39,12 +39,12 @@ func BenchmarkMultiplyMatrixVector(bench *testing.B) {
 }
 
 func TestIdentity(t *testing.T) {
-	assert.Equal(Identity(3), []float64{1, 0, 0, 0, 1, 0, 0, 0, 1}, t)
+	assert.Equal(Identity(3), []float64{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0}, t)
 }
 
 func TestInverse(t *testing.T) {
 	n := uint(3)
-	a := []float64{1, -1, 0, 0, 5, 3, 2, 0, -9}
+	a := []float64{1.0, -1.0, 0.0, 0.0, 5.0, 3.0, 2.0, 0.0, -9.0}
 
 	expectedA := []float64{
 		+8.823529411764706e-01, +1.764705882352941e-01, +5.882352941176472e-02,
@@ -61,13 +61,13 @@ func TestMultiplyMatrixVector(t *testing.T) {
 	p := uint(4)
 	n := uint(1)
 
-	a := []float64{1, 2, 3, 4, 5, 6, 7, 8}
-	b := []float64{1, 2, 3, 4}
+	a := []float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0}
+	b := []float64{1.0, 2.0, 3.0, 4.0}
 	c := make([]float64, m)
 
 	Multiply(a, b, c, m, p, n)
 
-	assert.Equal(c, []float64{50, 60}, t)
+	assert.Equal(c, []float64{50.0, 60.0}, t)
 }
 
 func TestMultiplyAdd(t *testing.T) {
@@ -75,19 +75,19 @@ func TestMultiplyAdd(t *testing.T) {
 	p := uint(3)
 	n := uint(4)
 
-	a := []float64{1, 2, 3, 4, 5, 6}
-	b := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-	c := []float64{1, 2, 3, 4, 5, 6, 7, 8}
+	a := []float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0}
+	b := []float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0}
+	c := []float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0}
 	d := make([]float64, m*n)
 
 	MultiplyAdd(a, b, c, d, m, p, n)
 
-	assert.Equal(d, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
-	assert.Equal(c, []float64{1, 2, 3, 4, 5, 6, 7, 8}, t)
+	assert.Equal(d, []float64{23.0, 30.0, 52.0, 68.0, 81.0, 106.0, 110.0, 144.0}, t)
+	assert.Equal(c, []float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0}, t)
 
 	MultiplyAdd(a, b, c, c, m, p, n)
 
-	assert.Equal(c, []float64{23, 30, 52, 68, 81, 106, 110, 144}, t)
+	assert.Equal(c, []float64{23.0, 30.0, 52.0, 68.0, 81.0, 106.0, 110.0, 144.0}, t)
 }
 
 func fillin(a []float64, v float64) {

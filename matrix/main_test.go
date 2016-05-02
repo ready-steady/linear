@@ -42,7 +42,7 @@ func TestIdentity(t *testing.T) {
 	assert.Equal(Identity(3), []float64{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0}, t)
 }
 
-func TestInverse(t *testing.T) {
+func TestInvert(t *testing.T) {
 	n := uint(3)
 	a := []float64{1.0, -1.0, 0.0, 0.0, 5.0, 3.0, 2.0, 0.0, -9.0}
 
@@ -52,7 +52,7 @@ func TestInverse(t *testing.T) {
 		+1.960784313725490e-01, +3.921568627450981e-02, -9.803921568627452e-02,
 	}
 
-	assert.Equal(Inverse(a, n), nil, t)
+	assert.Equal(Invert(a, n), nil, t)
 	assert.EqualWithin(a, expectedA, 1e-15, t)
 }
 

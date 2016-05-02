@@ -16,8 +16,8 @@ func Identity(m uint) []float64 {
 	return a
 }
 
-// Inverse computes the inverse of an m-by-m matrix.
-func Inverse(a []float64, m uint) error {
+// Invert computes the inverse of an m-by-m matrix.
+func Invert(a []float64, m uint) error {
 	ipiv := make([]int, m+1)
 	info := 0
 

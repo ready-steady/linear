@@ -7,6 +7,11 @@ import (
 	"github.com/ready-steady/lapack"
 )
 
+// Dot computes the dot product of two m-element vectors.
+func Dot(a, b []float64, m uint) float64 {
+	return lapack.DDOT(int(m), a, 1, b, 1)
+}
+
 // Identity constructs an m-by-m identity matrix.
 func Identity(m uint) []float64 {
 	a := make([]float64, m*m)

@@ -38,6 +38,10 @@ func BenchmarkMultiplyMatrixVector(bench *testing.B) {
 	}
 }
 
+func TestDot(t *testing.T) {
+	assert.Equal(Dot([]float64{1.0, 2.0, 3.0}, []float64{4.0, 5.0}, 2), 14.0, t)
+}
+
 func TestIdentity(t *testing.T) {
 	assert.Equal(Identity(3), []float64{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0}, t)
 }

@@ -16,7 +16,7 @@ func Dot(a, b []float64, m uint) float64 {
 func Identity(m uint) []float64 {
 	a := make([]float64, m*m)
 	for i := uint(0); i < m; i++ {
-		a[i*m+i] = 1
+		a[i*m+i] = 1.0
 	}
 	return a
 }
@@ -59,7 +59,6 @@ func MultiplyAdd(a, b, c, d []float64, m, p, n uint) {
 	if &c[0] != &d[0] {
 		copy(d, c)
 	}
-
 	if n == 1 {
 		lapack.DGEMV('N', int(m), int(p), 1, a, int(m), b, 1, 1, d, 1)
 	} else {

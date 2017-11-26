@@ -79,8 +79,8 @@ func TestSymmetricEigen(t *testing.T) {
 
 	SymmetricEigen(A, U, Λ, m)
 
-	assert.EqualWithin(U, eigenVectors, 2e-15, t)
-	assert.EqualWithin(Λ, eigenValues, 1e-15, t)
+	assert.Close(U, eigenVectors, 2e-15, t)
+	assert.Close(Λ, eigenValues, 1e-15, t)
 }
 
 func BenchmarkSymmeticEigen(b *testing.B) {

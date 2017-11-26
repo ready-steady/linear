@@ -57,7 +57,7 @@ func TestInvert(t *testing.T) {
 	}
 
 	assert.Equal(Invert(a, n), nil, t)
-	assert.EqualWithin(a, expectedA, 1e-15, t)
+	assert.Close(a, expectedA, 1e-15, t)
 }
 
 func TestMultiplyMatrixVector(t *testing.T) {

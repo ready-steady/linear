@@ -54,7 +54,7 @@ func TestComputeTridiagonal1D(t *testing.T) {
 		+6.5046602806975073e-01, -3.7949205847255349e-02,
 	}
 
-	assert.EqualWithin(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
+	assert.Close(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
 }
 
 func TestComputeTridiagonal2D(t *testing.T) {
@@ -95,7 +95,7 @@ func TestComputeTridiagonal2D(t *testing.T) {
 		+7.4728631269099247e-02, +5.5930860268891813e-01,
 	}
 
-	assert.EqualWithin(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
+	assert.Close(ComputeTridiagonal(a, b, c, d), x, 1e-15, t)
 }
 
 func BenchmarkComputeTridiagonal(b *testing.B) { benchmarkComputeTridiagonal(1000, 10, b) }
